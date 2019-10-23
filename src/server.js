@@ -14,7 +14,6 @@ app.use('/api',require('./routes'))
 
 try{
     app.listen(porta)
-    console.log(`Servidor PORTA:${porta}`)
 }catch(err){
     console.log(err)
 }

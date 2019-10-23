@@ -10,5 +10,5 @@ routes.get('/one/:id',ClientController.find_ONE)
 routes.post('/register',ClientController.create)
 routes.put('/update/:id',ClientController.update)
 routes.delete('/remove/:id',ClientController.destroy)
-
+ 
 module.exports = routes;
