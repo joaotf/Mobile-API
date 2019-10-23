@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const requireDir = require('require-dir')
 const cors = require('cors')
+const porta = process.env.PORT || 8080
 
 const app = express()
 app.use(express.json())
@@ -9,7 +10,11 @@ app.use(express.json())
 requireDir('./database')
 requireDir('./models')
 
-
 app.use('/api',require('./routes'))
 
-app.listen(8080)
+try{
+    app.listen(porta)
+    console.log(`Servidor PORTA:${porta}`)
+}catch(err){
+    console.log(err)
+}

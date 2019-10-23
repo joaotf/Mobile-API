@@ -1,20 +1,21 @@
 const mongoose = require('mongoose')
 
-const UserSchema = new mongoose.Schema({
+const ClientSchema = new mongoose.Schema({
     name:{
         type:String,
-        unique:true,
         required:true
     },
-    email:{
+    endereco:{
         type:String,
-        unique:true,
         required:true
     },
-    password:{
+    bairro:{
         type:String,
-        required:true,
-        select:false
+        required:true
+    },
+    numero:{
+        type:String,
+        required:true
     },
     createdAt:{
         type:Date,
@@ -22,4 +23,4 @@ const UserSchema = new mongoose.Schema({
     }
 })
 
-mongoose.model('User', UserSchema)
+mongoose.model('Client', ClientSchema)
