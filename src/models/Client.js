@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const ClientSchema = new mongoose.Schema({
-    name:{
+    nome:{
         type:String,
         required:true
     },
@@ -10,6 +10,10 @@ const ClientSchema = new mongoose.Schema({
         required:true
     },
     bairro:{
+        type:String,
+        required:true
+    },
+    lugar:{
         type:String,
         required:true
     },
