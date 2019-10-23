@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const ClientSchema = new mongoose.Schema({
     nome:{
         type:String,
+        uniquie:true,
         required:true
     },
     endereco:{

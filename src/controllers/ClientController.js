@@ -15,11 +15,15 @@ module.exports = {
     },
 
     async register(req,res){
-        const { name } = req.body;
+        const { nome } = req.body;
         try{
-            if(await Client.findOne({name}))
-                return res.status(400).send({error:"Cliente já está cadastrado!"})            
-            const client = await Client.create(req.body)
+            if(await Client.findOne({ nome })){
+                return res.status(400).send("User already exists")            
+            }else{
+                const client = await Client.create(req.body)
+                return res.json(client)
+            }
+                
         }
         catch{
             return res.status(400).send({error:"Falha no registro!"});
