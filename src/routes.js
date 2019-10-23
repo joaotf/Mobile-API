@@ -7,7 +7,7 @@ routes = express.Router()
 //Funções
 routes.get('/all',ClientController.find_ALL)
 routes.get('/one/:id',ClientController.find_ONE)
-routes.post('/register',ClientController.create)
+routes.post('/register',ClientController.register)
 routes.put('/update/:id',ClientController.update)
 routes.delete('/remove/:id',ClientController.destroy)
  

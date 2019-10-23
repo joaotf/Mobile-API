@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 
-
 const Client = mongoose.model('Client')
 
 module.exports = {
@@ -14,20 +13,28 @@ module.exports = {
 
         return res.json(clients)
     },
-    async create(req,res){
-        const clients = await Client.create(req.body)
-        
-        return res.json(clients)
+
+    async register(req,res){
+        const { name } = req.body;
+        try{
+            if(await Client.findOne({name}))
+                return res.status(400).send({error:"Cliente já está cadastrado!"})            
+            const client = await Client.create(req.body)
+        }
+        catch{
+            return res.status(400).send({error:"Falha no registro!"});
+        }
     },
+
     async update(req,res){
         const clients = await Client.findByIdAndUpdate(req.params.id, req.body , { new : true })
         
-        return res.status(200).json({message:"Usuário atualizado com sucesso!",clients })
+        return res.json(clients)
     },
     async destroy(req,res){
         const clients = await Client.findByIdAndRemove(req.params.id)
         
-        return res.status(200).json({message:"Usuário removido com sucesso!",clients})
+        return res.status(200)
     }
 
 }
